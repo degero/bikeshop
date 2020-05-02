@@ -1,8 +1,10 @@
 import { combineReducers } from "redux";
-import bikeReducer from "./bikeReducer";
+import bikes from "./bikeReducer";
+import apiCallsInProgress from "./apiCallsReducer";
 
 const rootReducer = combineReducers({
-  bikeReducer,
+  bikes,
+  apiCallsInProgress,
 });
 
 export default rootReducer;

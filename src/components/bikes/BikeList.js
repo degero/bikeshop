@@ -1,6 +1,6 @@
 import React from "react";
 
-const BikeList = (props) => (
+const BikeList = ({ bikes }) => (
   <table>
     <thead>
       <tr>
@@ -10,7 +10,7 @@ const BikeList = (props) => (
       </tr>
     </thead>
     <tbody>
-      {props.bikes.map((bike) => {
+      {bikes.map((bike) => {
         return (
           <tr>
             <td>{bike.manufacturer}</td>

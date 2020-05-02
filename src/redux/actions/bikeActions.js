@@ -2,8 +2,8 @@ import * as types from "./actionTypes";
 import * as bikeApi from "../../api/bikeApi";
 import { beginApiCall, apiCallError } from "./apiStatusActions";
 
-export function loadCourseSuccess(courses) {
-  return { type: types.LOAD_BIKES_SUCCESS, courses };
+export function loadBikeSuccess(bikes) {
+  return { type: types.LOAD_BIKES_SUCCESS, bikes };
 }
 
 export function saveBike(bike) {
@@ -17,8 +17,8 @@ export function loadBikes() {
     dispatch(beginApiCall());
     return bikeApi
       .getBikes()
-      .then((courses) => {
-        dispatch(loadBikeSuccess(courses));
+      .then((bikes) => {
+        dispatch(loadBikeSuccess(bikes));
       })
       .catch((error) => {
         dispatch(apiCallError(error));
