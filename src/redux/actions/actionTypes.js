@@ -1,0 +1,5 @@
+export const CREATE_BIKE = "CREATE_BIKE";
+export const LOAD_BIKES_SUCCESS = "LOAD_BIKES_SUCCESS";
+
+export const BEGIN_API_CALL = "BEGIN_API_CALL";
+export const API_CALL_ERROR = "API_CALL_ERROR";
