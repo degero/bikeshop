@@ -15,7 +15,8 @@ function App() {
             <Switch>
               <Route exact path="/" component={Home} />
               <Route path="/bikes" component={BikesPage} />
-              <Route path="/bikes/:slug" component={BikeCrudForm} />
+              <Route path="/bike/:slug" component={BikeCrudForm} />
+              <Route path="/bike" component={BikeCrudForm} />
               <Route component={NotFound} />
             </Switch>
           </main>

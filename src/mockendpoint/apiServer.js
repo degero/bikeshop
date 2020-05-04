@@ -42,11 +42,11 @@ server.use((req, res, next) => {
 });
 
 server.post("/bikes/", function (req, res, next) {
-  const error = validateCourse(req.body);
+  const error = validateBike(req.body);
   if (error) {
     res.status(400).send(error);
   } else {
-    req.body.slug = createSlug(req.body.title); // Generate a slug for new courses.
+    req.body.slug = createSlug(req.body.manufacturer + " " + req.body.model); // Generate a slug for new courses.
     next();
   }
 });

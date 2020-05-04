@@ -10,23 +10,24 @@ export function BikesPage(props) {
   const { bikes, actions } = props;
 
   useEffect(() => {
-    debugger;
     if (bikes.length === 0) {
       actions.loadBikes().catch((error) => {
         alert("Error loading bikes: " + error);
       });
     }
-  }, []);
+  }, [props.bikes]);
+
   return (
     <>
       <h1>Bikes</h1>
-      <Link to="/bikeform">Add bike</Link>
+      <Link to="/bike">Add bike</Link>
       {!props.loading ? <BikeList bikes={bikes}></BikeList> : <></>}
     </>
   );
 }
 
 function mapStateToProps(state) {
+  debugger;
   return {
     bikes: state.bikes,
     loading: state.apiCallsInProgress > 0,

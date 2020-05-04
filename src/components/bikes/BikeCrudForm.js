@@ -1,17 +1,35 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import BikeForm from "./BikeForm";
+import { loadBikes, saveBike } from "../../redux/actions/bikeActions";
+import { newBike } from "../../models/bike";
 
-const BikeCrudForm = ({ saveBike, history, ...props }) => {
-  const [bike, setBike] = useState({});
+export function BikeCrudForm({
+  bikes,
+  loadBikes,
+  saveBike,
+  history,
+  ...props
+}) {
+  const [bike, setBike] = useState({ ...props.bike });
+
+  useEffect(() => {
+    // load bikes if user navigated directly to this page
+    if (bikes.length === 0) {
+      loadBikes().catch((err) => alert("Error loading bikes:" + err));
+    } else {
+      setBike({ ...props.bike });
+    }
+  }, [props.bike]);
 
   function formIsValid() {
     const { manufacturer, model, price } = bike;
     const errors = {};
 
-    if (!manufacturer) errors.manufacturer = "Title is required.";
-    if (!model) errors.model = "Author is required";
-    if (!price) errors.price = "Category is required";
+    if (!manufacturer) errors.manufacturer = "Manufacturer is required.";
+    if (!model) errors.model = "Model is required";
+    if (!price) errors.price = "Price is required";
 
     // TODO set errors
     //setErrors(errors);
@@ -21,12 +39,15 @@ const BikeCrudForm = ({ saveBike, history, ...props }) => {
 
   function handleInputChange(event) {
     const { name, value } = event.target;
+    // take prev obj and replace with new obj and updated field 'name'
     setBike((prevBike) => ({
       ...prevBike,
+      [name]: value,
     }));
   }
 
   function handleSave(event) {
+    debugger;
     event.preventDefault();
     if (!formIsValid()) return;
     saveBike(bike)
@@ -39,19 +60,42 @@ const BikeCrudForm = ({ saveBike, history, ...props }) => {
       });
   }
 
-  return (
+  return bikes.length === 0 ? (
+    <></>
+  ) : (
     <BikeForm
       onSave={handleSave}
       onChange={handleInputChange}
       bike={bike}
     ></BikeForm>
   );
-};
+}
 
 BikeCrudForm.propTypes = {
   bike: PropTypes.object.isRequired,
-  saveBike: PropTypes.object.isRequired,
+  bikes: PropTypes.array.isRequired,
+  loadBikes: PropTypes.func.isRequired,
+  saveBike: PropTypes.func.isRequired,
   history: PropTypes.object.isRequired,
 };
 
-export default BikeCrudForm;
+function getBikeBySlug(bikes, slug) {
+  return bikes.find((bike) => bike.slug === slug);
+}
+
+function mapStateToProps(state, ownProps) {
+  const slug = ownProps.match.params.slug;
+  const bike =
+    slug && state.bikes.length > 0 ? getBikeBySlug(state.bikes, slug) : newBike;
+  return {
+    bike,
+    bikes: state.bikes,
+  };
+}
+
+const mapDispatchToProps = {
+  loadBikes,
+  saveBike,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(BikeCrudForm);
