@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
-const BikeList = ({ bikes }) => (
+const BikeList = ({ bikes, deleteItem }) => (
   <table>
     <thead>
       <tr>
@@ -13,24 +13,35 @@ const BikeList = ({ bikes }) => (
       </tr>
     </thead>
     <tbody>
-      {bikes.map((bike) => {
-        return (
-          <tr>
-            <td>{bike.manufacturer}</td>
-            <td>{bike.model}</td>
-            <td>${bike.price}</td>
-            <td>
-              <Link to={"/bike/" + bike.slug}>Edit</Link>
-            </td>
-          </tr>
-        );
-      })}
+      {bikes ? (
+        bikes.map((bike) => {
+          return (
+            <tr key={bike.id}>
+              <td>{bike.manufacturer}</td>
+              <td>{bike.model}</td>
+              <td>${bike.price}</td>
+              <td>
+                <Link to={"/bike/" + bike.slug}>Edit</Link>
+                <button
+                  className="btn btn-outline-danger"
+                  onClick={() => deleteItem(bike)}
+                >
+                  Delete
+                </button>
+              </td>
+            </tr>
+          );
+        })
+      ) : (
+        <></>
+      )}
     </tbody>
   </table>
 );
 
 BikeList.propTypes = {
-  bikes: PropTypes.array.isRequired,
+  bikes: PropTypes.array,
+  deleteItem: PropTypes.func.isRequired,
 };
 
 export default BikeList;

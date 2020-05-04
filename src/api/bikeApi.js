@@ -14,3 +14,11 @@ export function saveBike(bike) {
     .then(handleResponse)
     .catch(handleError);
 }
+
+export function deleteBike(bike) {
+  return fetch(baseUrl + bike.id, {
+    method: "DELETE",
+  })
+    .then(handleResponse)
+    .catch(handleError);
+}

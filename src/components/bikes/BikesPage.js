@@ -10,7 +10,7 @@ export function BikesPage(props) {
   const { bikes, actions } = props;
 
   useEffect(() => {
-    if (bikes.length === 0) {
+    if (!bikes) {
       actions.loadBikes().catch((error) => {
         alert("Error loading bikes: " + error);
       });
@@ -21,7 +21,11 @@ export function BikesPage(props) {
     <>
       <h1>Bikes</h1>
       <Link to="/bike">Add bike</Link>
-      {!props.loading ? <BikeList bikes={bikes}></BikeList> : <></>}
+      {!props.loading ? (
+        <BikeList bikes={bikes} deleteItem={actions.deleteBike}></BikeList>
+      ) : (
+        <></>
+      )}
     </>
   );
 }
@@ -38,14 +42,14 @@ function mapDispatchToProps(dispatch) {
   return {
     actions: {
       loadBikes: bindActionCreators(bikeActions.loadBikes, dispatch),
-      // todo add crud actions    },
+      deleteBike: bindActionCreators(bikeActions.deleteBike, dispatch),
     },
   };
 }
 
 BikesPage.propTypes = {
   actions: PropTypes.object.isRequired,
-  bikes: PropTypes.array.isRequired,
+  bikes: PropTypes.array,
   loading: PropTypes.bool.isRequired,
 };
 

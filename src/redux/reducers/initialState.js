@@ -1,4 +1,4 @@
 export default {
-  bikes: [],
+  bikes: null,
   apiCallsInProgress: 0,
 };

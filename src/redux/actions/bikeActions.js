@@ -15,15 +15,24 @@ export function updatedBikeSuccess(bike) {
   // perhaps better to reload set from server to keep in sync if multiple editors?
   return { type: types.UPDATE_BIKE_SUCCESS, bike };
 }
-
+export function deleteBike(bike) {
+  return function (dispatch, getState) {
+    return bikeApi
+      .deleteBike(bike)
+      .then(dispatch({ type: types.DELETE_BIKE_OPTIMISTIC, bike }))
+      .catch((err) => {
+        dispatch(apiCallError(err));
+        throw err;
+      });
+  };
+}
 export function saveBike(bike) {
   return function (dispatch, getState) {
     dispatch(beginApiCall());
-    // TODO handle update
     return bikeApi
       .saveBike(bike)
       .then((savedBike) => {
-        savedBike.id
+        bike.id
           ? dispatch(updatedBikeSuccess(savedBike))
           : dispatch(createdBikeSuccess(savedBike));
       })

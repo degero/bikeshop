@@ -9,9 +9,9 @@ import BikeCrudForm from "./bikes/BikeCrudForm";
 function App() {
   return (
     <Router>
-      <div class="container-fluid">
-        <div class="row flex-xl-nowrap px-lg-5">
-          <main class="col-12">
+      <div className="container-fluid">
+        <div className="row flex-xl-nowrap px-lg-5">
+          <main className="col-12">
             <Switch>
               <Route exact path="/" component={Home} />
               <Route path="/bikes" component={BikesPage} />

@@ -10,6 +10,8 @@ export default function bikeReducer(state = initialState.bikes, action) {
       return state.map((bike) =>
         bike.id === action.bike.id ? action.bike : bike
       ); // map the updated bike to the state
+    case types.DELETE_BIKE_OPTIMISTIC:
+      return state.filter((bike) => bike.id !== action.bike.id); // filter out deleted bike
     case types.LOAD_BIKES_SUCCESS:
       return action.bikes;
     default:

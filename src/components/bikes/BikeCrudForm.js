@@ -16,7 +16,7 @@ export function BikeCrudForm({
 
   useEffect(() => {
     // load bikes if user navigated directly to this page
-    if (bikes.length === 0) {
+    if (!bikes) {
       loadBikes().catch((err) => alert("Error loading bikes:" + err));
     } else {
       setBike({ ...props.bike });
@@ -60,9 +60,7 @@ export function BikeCrudForm({
       });
   }
 
-  return bikes.length === 0 ? (
-    <></>
-  ) : (
+  return (
     <BikeForm
       onSave={handleSave}
       onChange={handleInputChange}
@@ -73,7 +71,7 @@ export function BikeCrudForm({
 
 BikeCrudForm.propTypes = {
   bike: PropTypes.object.isRequired,
-  bikes: PropTypes.array.isRequired,
+  bikes: PropTypes.array,
   loadBikes: PropTypes.func.isRequired,
   saveBike: PropTypes.func.isRequired,
   history: PropTypes.object.isRequired,
@@ -84,9 +82,13 @@ function getBikeBySlug(bikes, slug) {
 }
 
 function mapStateToProps(state, ownProps) {
+  debugger;
+
   const slug = ownProps.match.params.slug;
   const bike =
-    slug && state.bikes.length > 0 ? getBikeBySlug(state.bikes, slug) : newBike;
+    slug && state.bikes && state.bikes.length > 0
+      ? getBikeBySlug(state.bikes, slug)
+      : newBike;
   return {
     bike,
     bikes: state.bikes,
