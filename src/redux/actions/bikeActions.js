@@ -17,6 +17,7 @@ export function updatedBikeSuccess(bike) {
 }
 export function deleteBike(bike) {
   return function (dispatch, getState) {
+    // this is deleted optimistic so no api call tracking is done
     return bikeApi
       .deleteBike(bike)
       .then(dispatch({ type: types.DELETE_BIKE_OPTIMISTIC, bike }))

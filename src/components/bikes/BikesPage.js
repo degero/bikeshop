@@ -31,7 +31,6 @@ export function BikesPage(props) {
 }
 
 function mapStateToProps(state) {
-  debugger;
   return {
     bikes: state.bikes,
     loading: state.apiCallsInProgress > 0,

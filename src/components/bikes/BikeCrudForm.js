@@ -47,7 +47,6 @@ export function BikeCrudForm({
   }
 
   function handleSave(event) {
-    debugger;
     event.preventDefault();
     if (!formIsValid()) return;
     saveBike(bike)
@@ -82,8 +81,6 @@ function getBikeBySlug(bikes, slug) {
 }
 
 function mapStateToProps(state, ownProps) {
-  debugger;
-
   const slug = ownProps.match.params.slug;
   const bike =
     slug && state.bikes && state.bikes.length > 0

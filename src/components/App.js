@@ -5,11 +5,14 @@ import NotFound from "./common/NotFound";
 import "./App.css";
 import BikesPage from "./bikes/BikesPage";
 import BikeCrudForm from "./bikes/BikeCrudForm";
+import Header from "./common/Header";
+import Footer from "./common/Footer";
 
 function App() {
   return (
     <Router>
-      <div className="container-fluid">
+      <Header></Header>
+      <div className="container-fluid main-body">
         <div className="row flex-xl-nowrap px-lg-5">
           <main className="col-12">
             <Switch>
@@ -22,6 +25,7 @@ function App() {
           </main>
         </div>
       </div>
+      <Footer></Footer>
     </Router>
   );
 }
