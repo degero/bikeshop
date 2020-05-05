@@ -13,6 +13,7 @@ export function BikeCrudForm({
   ...props
 }) {
   const [bike, setBike] = useState({ ...props.bike });
+  const [errors, setErrors] = useState({});
 
   useEffect(() => {
     // load bikes if user navigated directly to this page
@@ -31,8 +32,7 @@ export function BikeCrudForm({
     if (!model) errors.model = "Model is required";
     if (!price) errors.price = "Price is required";
 
-    // TODO set errors
-    //setErrors(errors);
+    setErrors(errors);
     // Form is valid if the errors object still has no properties
     return Object.keys(errors).length === 0;
   }
@@ -55,7 +55,7 @@ export function BikeCrudForm({
         history.push("/bikes");
       })
       .catch((error) => {
-        // TODO show errors
+        setErrors({ onSave: error.message });
       });
   }
 
@@ -64,12 +64,14 @@ export function BikeCrudForm({
       onSave={handleSave}
       onChange={handleInputChange}
       bike={bike}
+      errors={errors}
     ></BikeForm>
   );
 }
 
 BikeCrudForm.propTypes = {
   bike: PropTypes.object.isRequired,
+  errors: PropTypes.object,
   bikes: PropTypes.array,
   loadBikes: PropTypes.func.isRequired,
   saveBike: PropTypes.func.isRequired,

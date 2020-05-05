@@ -12,6 +12,7 @@ function App() {
   return (
     <Router>
       <Header></Header>
+      <main>
       <div className="container-fluid main-body">
         <div className="row flex-xl-nowrap px-lg-5">
           <main className="col-12">
@@ -25,6 +26,7 @@ function App() {
           </main>
         </div>
       </div>
+      </main>
       <Footer></Footer>
     </Router>
   );
