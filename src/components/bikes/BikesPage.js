@@ -5,6 +5,7 @@ import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import * as bikeActions from "../../redux/actions/bikeActions";
 import PropTypes from "prop-types";
+import Spinner from "../common/Spinner";
 
 export function BikesPage(props) {
   const { bikes, actions } = props;
@@ -19,12 +20,13 @@ export function BikesPage(props) {
 
   return (
     <>
-      <h1>Bikes</h1>
+      <h2>Bikes</h2>
       <Link to="/bike">Add bike</Link>
+      <br />
       {!props.loading ? (
         <BikeList bikes={bikes} deleteItem={actions.deleteBike}></BikeList>
       ) : (
-        <></>
+        <Spinner />
       )}
     </>
   );

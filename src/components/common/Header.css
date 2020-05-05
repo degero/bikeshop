@@ -1,0 +1,11 @@
+.home-link {
+    margin-bottom: -30px;
+}
+
+.header-logo {
+    height: 38px;
+    width: 98px;
+    display: inline-block;
+    background-image: url("../../assets/img/logo-sm.png");
+    background-repeat: no-repeat;
+}

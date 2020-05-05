@@ -28,7 +28,7 @@ const BikeForm = ({ bike, onSave, onChange }) => {
             />
           </div>
           <div class="form-group">
-            <label for="Email">Price:</label>
+            <label for="Email">Price ($USD):</label>
             <input
               class="form-control"
               type="text"

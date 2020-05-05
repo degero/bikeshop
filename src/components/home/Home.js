@@ -2,9 +2,11 @@ import React from "react";
 
 const Home = () => (
   <>
-    <p style={{ textAlign: "center" }}>
-      <span class="site-logo"></span>
-    </p>
+    <div class="d-flex justify-content-center">
+      <p>
+        <span class="site-logo"></span>
+      </p>
+    </div>
     <h1>Welcome to the Bikeshop!</h1>
     <p>
       Introduction Now and then, a Pilsner is a big fan of another burglar ale.

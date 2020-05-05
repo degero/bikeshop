@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
-import PropTypes from "prop-types";
 
 // We can use a seperate component for each list item or
 function NavItem(props) {
@@ -16,11 +15,6 @@ function NavItem(props) {
 
 const Navbar = (props) => (
   <>
-    <div class="navbar-nav">
-      <Link to="/" class="nav-link home-link">
-        <b>Home</b>
-      </Link>
-    </div>
     <div class="navbar-nav-scroll">
       <nav>
         <ul class="navbar-nav bd-navbar-nav flex-row">

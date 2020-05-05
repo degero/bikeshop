@@ -3,12 +3,13 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
 const BikeList = ({ bikes, deleteItem }) => (
-  <table>
+  <table className="table">
     <thead>
       <tr>
         <th>Manufacturer</th>
         <th>Model</th>
-        <th>Price</th>
+        <th>Price ($USD)</th>
+        <th></th>
         <th></th>
       </tr>
     </thead>
@@ -21,7 +22,11 @@ const BikeList = ({ bikes, deleteItem }) => (
               <td>{bike.model}</td>
               <td>${bike.price}</td>
               <td>
-                <Link to={"/bike/" + bike.slug}>Edit</Link>
+                <Link to={"/bike/" + bike.slug} className="btn btn-link">
+                  Edit
+                </Link>
+              </td>
+              <td>
                 <button
                   className="btn btn-outline-danger"
                   onClick={() => deleteItem(bike)}

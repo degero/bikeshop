@@ -4,7 +4,7 @@ const REDUX_VERSION = "4.0.5";
 
 const Footer = () => (
   <footer>
-    <div class="container-fluid">
+    <div class="container-fluid fixed-bottom footer-container">
       <div class="row flex-xl-nowrap">
         <div class="col-4"></div>
       </div>
@@ -12,7 +12,7 @@ const Footer = () => (
         <div class="col-4">
           <p>Copyright ©{new Date().getFullYear()} Chad Paynter</p>
         </div>
-        <div class="col-4">
+        <div class="col-4 d-flex justify-content-center">
           <p>
             <b>
               <span class="react-logo">react.js</span>
@@ -22,10 +22,16 @@ const Footer = () => (
             </i>
           </p>
         </div>
-        <div class="col-4">
-          <a href="https://linkedin.com/in/chadpaynter/">LinkedIn</a>
-          <a href="https://github.com/degero">Github</a>
-          {/* <a href="/Privacy">Privacy Policy</a> */}
+        <div class="col-4 d-flex justify-content-end">
+          <p>
+            <a class="link" href="https://linkedin.com/in/chadpaynter/">
+              LinkedIn
+            </a>
+            &nbsp;|&nbsp;
+            <a class="link" href="https://github.com/degero/bikeshop">
+              Github
+            </a>
+          </p>
         </div>
       </div>
     </div>

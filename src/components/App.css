@@ -2,7 +2,7 @@
   font-family: 'Roboto', sans-serif;
 }
 
-.App {
+/* .App {
   text-align: center;
 }
 
@@ -12,6 +12,7 @@
   pointer-events: none;
 }
 
+/* 
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -21,19 +22,20 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-}
+} */
 
 .App-link {
   color: #61dafb;
 }
 
-header {
+/* header {
   background-color: #282c34;
   padding: 16px !important;
   padding-top: 24px !important;
-}
+} */
 
-footer {
+.footer-container {
+  padding-top: 1rem;
   background: #d3d3d3;
 }
 
@@ -51,6 +53,8 @@ form {
   padding-left: 2px;
 }
 
+*/
+
 /* h2 {margin-left: -8px;} */
 @keyframes App-logo-spin {
   from {
@@ -67,8 +71,8 @@ form {
 }
 
 .site-logo {
-  height: 140px;
-  width: 200px;
+  height: 85px;
+  width: 198px;
   display: inline-block;
   background-image: url("../assets/img/logo.png");
   background-repeat: no-repeat;
