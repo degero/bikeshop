@@ -1,6 +1,6 @@
 mkdir ..\deploy
 cd ..\deploy
-git clone https://heroku:607ec359-91ae-45aa-8155-ceb2339346fc@git.heroku.com/bikeshop-react.git .
+git clone https://heroku:$(heroku.token)@git.heroku.com/$(heroku.appname).git .
 mkdir build
 cd build
 xcopy ..\..\build . /S /Y
