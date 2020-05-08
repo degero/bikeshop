@@ -1,0 +1,147 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Bikeform component - snapshots sets submit button label 'Save' when saving is false 1`] = `
+<div
+  className="row content"
+>
+  <div
+    className="col-12 col-md-4"
+  >
+    <h2>
+      Edit
+       Bike
+    </h2>
+    <form
+      autoComplete="off"
+      onSubmit={[MockFunction]}
+    >
+      <div
+        className="form-group"
+      >
+        <label
+          htmlFor="manufacturer"
+        >
+          Manufacturer:
+        </label>
+        <input
+          className="form-control"
+          name="manufacturer"
+          onChange={[MockFunction]}
+          type="text"
+          value="Santa Cruz"
+        />
+      </div>
+      <div
+        className="form-group"
+      >
+        <label
+          htmlFor="model"
+        >
+          Model:
+        </label>
+        <input
+          className="form-control"
+          name="model"
+          onChange={[MockFunction]}
+          type="text"
+          value="Bronson"
+        />
+      </div>
+      <div
+        className="form-group"
+      >
+        <label
+          htmlFor="price"
+        >
+          Price ($USD):
+        </label>
+        <input
+          className="form-control"
+          name="price"
+          onChange={[MockFunction]}
+          type="text"
+          value={6999}
+        />
+      </div>
+      <input
+        className="btn btn-primary"
+        type="submit"
+        value="Save"
+      />
+    </form>
+  </div>
+</div>
+`;
+
+exports[`Bikeform component - snapshots sets submit button label 'Saving...' when saving is true 1`] = `
+<div
+  className="row content"
+>
+  <div
+    className="col-12 col-md-4"
+  >
+    <h2>
+      Edit
+       Bike
+    </h2>
+    <form
+      autoComplete="off"
+      onSubmit={[MockFunction]}
+    >
+      <div
+        className="form-group"
+      >
+        <label
+          htmlFor="manufacturer"
+        >
+          Manufacturer:
+        </label>
+        <input
+          className="form-control"
+          name="manufacturer"
+          onChange={[MockFunction]}
+          type="text"
+          value="Santa Cruz"
+        />
+      </div>
+      <div
+        className="form-group"
+      >
+        <label
+          htmlFor="model"
+        >
+          Model:
+        </label>
+        <input
+          className="form-control"
+          name="model"
+          onChange={[MockFunction]}
+          type="text"
+          value="Bronson"
+        />
+      </div>
+      <div
+        className="form-group"
+      >
+        <label
+          htmlFor="price"
+        >
+          Price ($USD):
+        </label>
+        <input
+          className="form-control"
+          name="price"
+          onChange={[MockFunction]}
+          type="text"
+          value={6999}
+        />
+      </div>
+      <input
+        className="btn btn-primary"
+        type="submit"
+        value="Saving"
+      />
+    </form>
+  </div>
+</div>
+`;

@@ -1,13 +1,13 @@
 import React from "react";
 import TextInput from "../common/TextInput";
 
-const BikeForm = ({ bike, onSave, onChange, errors }) => {
+const BikeForm = ({ bike, onSave, onChange, errors = {}, saving = false }) => {
   return (
-    <div class="row content">
-      <div class="col-12 col-md-4">
+    <div className="row content">
+      <div className="col-12 col-md-4">
         <h2>{bike.id ? "Edit" : "Create"} Bike</h2>
         {errors.onSave && (
-          <div class="alert alert-danger" role="alert">
+          <div className="alert alert-danger" role="alert">
             {errors.onSave}
           </div>
         )}
@@ -33,7 +33,11 @@ const BikeForm = ({ bike, onSave, onChange, errors }) => {
             value={bike.price}
             error={errors.price}
           ></TextInput>
-          <input class="btn btn-primary" type="submit" value="Save" />
+          <input
+            className="btn btn-primary"
+            type="submit"
+            value={saving ? "Saving" : "Save"}
+          />
         </form>
       </div>
     </div>

@@ -9,26 +9,26 @@ const TextInput = ({ value, error, onChange, name, label }) => {
   }
 
   return (
-    <div class={formWrapperStyle}>
-      <label for={name}>{label}</label>
+    <div className={formWrapperStyle}>
+      <label htmlFor={name}>{label}</label>
       <input
-        class="form-control"
+        className="form-control"
         type="text"
         name={name}
         onChange={onChange}
         value={value}
       />
-      {error && <div class="alert alert-danger">{error}</div>}
+      {error && <div className="alert alert-danger">{error}</div>}
     </div>
   );
 };
 
 TextInput.propTypes = {
-  value: PropTypes.object.isRequired,
-  error: PropTypes.func.isRequired,
-  onChange: PropTypes.object.isRequired,
-  name: PropTypes.object.isRequired,
-  label: PropTypes.object.isRequired,
+  value: PropTypes.any.isRequired,
+  error: PropTypes.string,
+  onChange: PropTypes.func.isRequired,
+  name: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
 };
 
 export default TextInput;

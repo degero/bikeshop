@@ -2,9 +2,9 @@ import React from "react";
 
 const Home = () => (
   <>
-    <div class="d-flex justify-content-center">
+    <div className="d-flex justify-content-center">
       <p>
-        <span class="site-logo"></span>
+        <span className="site-logo"></span>
       </p>
     </div>
     <h1>Welcome to the Bikeshop!</h1>

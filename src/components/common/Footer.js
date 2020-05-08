@@ -4,31 +4,31 @@ const REDUX_VERSION = "4.0.5";
 
 const Footer = () => (
   <footer>
-    <div class="container-fluid fixed-bottom footer-container">
-      <div class="row flex-xl-nowrap">
-        <div class="col-4"></div>
+    <div className="container-fluid fixed-bottom footer-container">
+      <div className="row flex-xl-nowrap">
+        <div className="col-4"></div>
       </div>
-      <div class="row flex-xl-nowrap">
-        <div class="col-4">
+      <div className="row flex-xl-nowrap">
+        <div className="col-4">
           <p>Copyright ©{new Date().getFullYear()} Chad Paynter</p>
         </div>
-        <div class="col-4 d-flex justify-content-center">
+        <div className="col-4 d-flex justify-content-center">
           <p>
             <b>
-              <span class="react-logo">react.js</span>
+              <span className="react-logo">react.js</span>
             </b>{" "}
             <i>
               version {REACT_VERSION} + Redux {REDUX_VERSION}
             </i>
           </p>
         </div>
-        <div class="col-4 d-flex justify-content-end">
+        <div className="col-4 d-flex justify-content-end">
           <p>
-            <a class="link" href="https://linkedin.com/in/chadpaynter/">
+            <a className="link" href="https://linkedin.com/in/chadpaynter/">
               LinkedIn
             </a>
             &nbsp;|&nbsp;
-            <a class="link" href="https://github.com/degero/bikeshop">
+            <a className="link" href="https://github.com/degero/bikeshop">
               Github
             </a>
           </p>
