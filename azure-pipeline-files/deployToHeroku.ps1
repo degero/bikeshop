@@ -1,5 +1,5 @@
-mkdir .\deploy
-cd .\deploy
+mkdir .\heroku-deploy
+cd .\heroku-deploy
 git clone https://heroku:$env:HEROKTOKEN@git.heroku.com/$env:HEROKAPPNAME.git .
 mkdir build
 cd build
