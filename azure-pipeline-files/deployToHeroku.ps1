@@ -1,6 +1,8 @@
+Write-Host "Staring deploy for $Env:SYSTEM_TEAMPROJECT"
 mkdir .\heroku-deploy
 cd .\heroku-deploy
-git clone https://heroku:$Env:HEROKTOKEN@git.heroku.com/$Env:HEROKAPPNAME.git .
+Write-Host "Retriving heroku git for $Env:HEROKUAPPNAME.git"
+git clone https://heroku:$Env:HEROKUTOKEN@git.heroku.com/$Env:HEROKUAPPNAME.git .
 mkdir build
 cd build
 xcopy ..\..\build . /S /Y
@@ -11,7 +13,7 @@ xcopy ..\server.js . /Y
 xcopy ..\db.json . /Y
 xcopy ..\Procfile . /Y
 git add .
-echo "Setting git $Env:GIT_NAME"
+Write-Host "Setting git $Env:GIT_NAME"
 git config user.name $Env:GIT_NAME
 git config user.email $Env:GIT_EMAIL
 git commit -m "Azure devops deploy"
