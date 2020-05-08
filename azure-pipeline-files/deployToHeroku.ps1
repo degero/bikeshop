@@ -11,4 +11,6 @@ xcopy ..\server.js . /Y
 xcopy ..\db.json . /Y
 xcopy ..\Procfile . /Y
 git add .
+git config user.name $Env:GIT_NAME
+git config user.email $Env:GIT_EMAIL
 git commit -m "Azure devops deploy"
