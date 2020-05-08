@@ -1,5 +1,5 @@
 Write-Host "Staring deploy for $Env:SYSTEM_TEAMPROJECT"
-rm -r -fo .\heroku-deploy
+if (Test-Path .\heroku-deploy) { rm -r -fo .\heroku-deploy }
 mkdir .\heroku-deploy
 cd .\heroku-deploy
 Write-Host "Retriving heroku git for $Env:HEROKUAPPNAME.git"
