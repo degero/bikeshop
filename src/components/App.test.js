@@ -1,9 +1,38 @@
-import React from 'react';
-import { render } from '@testing-library/react';
-import App from './App';
+import React from "react";
+import App from "./App";
+import { mount, shallow } from "enzyme";
 
-test('renders learn react link', () => {
-  const { getByText } = render(<App />);
-  const linkElement = getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+describe("App component", () => {
+  it("renders header", () => {
+    // ARRANGE
+    const app = shallow(<App />);
+
+    // ACT
+    var header = app.find("Header");
+
+    // ASSERT
+    expect(header).not.toBeNull();
+  });
+
+  it("renders footer", () => {
+    // ARRANGE
+    const app = shallow(<App />);
+
+    // ACT
+    var header = app.find("Footer");
+
+    // ASSERT
+    expect(header).not.toBeNull();
+  });
+
+  it("renders main", () => {
+    // ARRANGE
+    const app = shallow(<App />);
+
+    // ACT
+    var header = app.find("main");
+
+    // ASSERT
+    expect(header).not.toBeNull();
+  });
 });

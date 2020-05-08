@@ -5,34 +5,38 @@ import "./Navbar.css";
 // We can use a seperate component for each list item or
 function NavItem(props) {
   return (
-    <li class="nav-item">
-      <Link class="nav-link" to={props.route}>
+    <li className="nav-item">
+      <Link className="nav-link" to={props.route}>
         {props.label}
       </Link>
     </li>
   );
 }
 
-const Navbar = (props) => (
-  <>
-    <div class="navbar-nav-scroll">
-      <nav>
-        <ul class="navbar-nav bd-navbar-nav flex-row">
-          {props.routes ? (
-            props.routes.map((item) => (
-              <NavItem
-                key={item.id}
-                route={item.route}
-                label={item.label}
-              ></NavItem>
-            ))
-          ) : (
-            <></>
-          )}
-        </ul>
-      </nav>
-    </div>
-  </>
-);
+const Navbar = (props) => {
+  console.log(props);
+
+  return (
+    <>
+      <div className="navbar-nav-scroll">
+        <nav>
+          <ul className="navbar-nav bd-navbar-nav flex-row">
+            {props.routes ? (
+              props.routes.map((item) => (
+                <NavItem
+                  key={item.id}
+                  route={item.route}
+                  label={item.label}
+                ></NavItem>
+              ))
+            ) : (
+              <></>
+            )}
+          </ul>
+        </nav>
+      </div>
+    </>
+  );
+};
 
 export default Navbar;
