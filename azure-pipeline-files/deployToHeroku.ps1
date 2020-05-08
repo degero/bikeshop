@@ -1,11 +1,6 @@
-param (
-    [string]$herokutoken = "",
-    [string]$herokuappname = ""
-)
-
-mkdir ..\deploy
-cd ..\deploy
-git clone https://heroku:$herokutoken@git.heroku.com/$herokuappname.git .
+mkdir .\deploy
+cd .\deploy
+git clone https://heroku:$env:HEROKTOKEN@git.heroku.com/$env:HEROKAPPNAME.git .
 mkdir build
 cd build
 xcopy ..\..\build . /S /Y
