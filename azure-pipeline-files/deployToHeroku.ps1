@@ -17,5 +17,7 @@ xcopy ..\Procfile . /Y
 git add .
 Write-Host "Commit and Push to heroku"
 $GitDetails = $Env:GITNAME + " <" + $Env:GITEMAIL + ">"
+git config user.name $Env:GITNAME
+git config user.email $Env:GITEMAIL
 git commit -m "Azure devops deploy" --author=$GitDetails
-git push
+git push https://heroku:$Env:HEROKUTOKEN@git.heroku.com/$Env:HEROKUAPPNAME.git 
