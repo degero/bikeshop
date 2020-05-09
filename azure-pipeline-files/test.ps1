@@ -1,1 +1,1 @@
-($env:CI = "true") -and (yarn test)
+($env:CI = "true") -and (npm run testci)

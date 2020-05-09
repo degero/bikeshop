@@ -7,6 +7,7 @@
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "bootstrap": "^4.4.1",
+    "jest-junit-reporter": "^1.1.0",
     "json-server": "^0.16.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
@@ -23,7 +24,7 @@
     "start:api": "node src/mockendpoint/apiServer.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "test:ci": "react-scripts test — testResultsProcessor ./node_modules/jest-junit-reporter",
+    "testci": "react-scripts test --testResultsProcessor ./node_modules/jest-junit-reporter",
     "eject": "react-scripts eject",
     "heroku-postbuild": "",
     "start:heroku": "node json-server.js"
