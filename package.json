@@ -23,7 +23,7 @@
     "start:api": "node src/mockendpoint/apiServer.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "test:ci": "react-scripts test --ci",
+    "test:ci": "react-scripts test — testResultsProcessor ./node_modules/jest-junit-reporter",
     "eject": "react-scripts eject",
     "heroku-postbuild": "",
     "start:heroku": "node json-server.js"
