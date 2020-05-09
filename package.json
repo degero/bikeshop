@@ -26,8 +26,7 @@
     "test": "react-scripts test",
     "testci": "react-scripts test --testResultsProcessor ./node_modules/jest-junit-reporter",
     "eject": "react-scripts eject",
-    "heroku-postbuild": "",
-    "start:heroku": "node json-server.js"
+    "heroku-postbuild": ""
   },
   "eslintConfig": {
     "extends": "react-app"
