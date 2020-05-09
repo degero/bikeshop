@@ -4,6 +4,7 @@ mkdir .\heroku-deploy
 cd .\heroku-deploy
 Write-Host "Retriving heroku git for $Env:HEROKUAPPNAME.git"
 git clone https://heroku:$Env:HEROKUTOKEN@git.heroku.com/$Env:HEROKUAPPNAME.git .
+if (Test-Path .\build) { rm -r -fo .\build }
 mkdir build
 cd build
 xcopy ..\..\build . /S /Y
