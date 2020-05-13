@@ -1,0 +1,20 @@
+FROM node:12-alpine
+
+WORKDIR /app/build
+COPY ./build .
+
+WORKDIR /app
+COPY ./node_modules /app/node_modules
+COPY ./package.json .
+COPY ./json-server.js .
+COPY ./server.js .
+COPY ./db.json .
+# install dependencies
+#RUN yarn install
+
+# Run the image as a non-root user
+RUN adduser -D myuser
+RUN chown -R myuser /app
+USER myuser
+
+CMD ["node", "json-server.js"]
