@@ -16,6 +16,10 @@ Azure Devops - See .\azure-pipeline-files for scripts
 
 ### Heroku Deployment
 
+There are two deployment options:
+   * Heroku git repo (pipeline-heroku-git.yaml)
+   * Heroku docker registry (pipeline-heroku-docker.yaml)
+
 NOTE: because heroku has limited deployment methods, git deployment results in heroku requiring a passing build to complete (however the build is done on azure devops), added "heroku-postbuild": "" to package.json "scripts" section to pass the build
 
 ### Devops pipeline variables
@@ -26,13 +30,21 @@ Add the following to your pipeline (note any secret variables need to be mapped 
   'heroku authorizations:create --description="<useful name>" --short' then login to heroko website and retrieve the token
   from https://dashboard.heroku.com/account/applications
 - heroku.appname - name of application registered in heroku eg my-app
-- git.name (secret) - for git details when pushing repo to heroku
-- git.email (secret)
+- git.name (secret) (for pipeline-heroku-git.yaml only)
+- git.email (secret) (for pipeline-heroku-git.yaml only)
 
 ### Devops pipeline scripts
 
-Add the following powershell scripts to your pipeline (this includes building the app)
+You can use the provided yaml pipeline definitions or add the following powershell scripts to your custom created pipeline
 
-- build.ps1
-- test.ps1 (add a Publish test results task after this script to process the test-report.xml (JUnit report) in the root)
-- deployToHeroku.ps1 located in azure-pipeline-files
+- Powershell task - build.ps1
+- Powershell task - test.ps1 
+- Publish test results task - process the test-report.xml (JUnit report) in the root folder
+
+For git deploy
+- Powershell task - deployToHeroku.ps1
+
+For docker deploy
+- Docker task - login (connect to heroku repo, you can use _ as the username and an api key as the password - https://devcenter.heroku.com/articles/container-registry-and-runtime#using-a-ci-cd-platform)
+- Docker task - buildAndPush (point to the Dockerfile-heroku)
+- Docker task - logout
