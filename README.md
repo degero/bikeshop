@@ -1,5 +1,7 @@
 # Bikeshop
 
+[![Board Status](https://dev.azure.com/weylandcorp/733f58eb-f0fa-47ad-a944-2e29975fb82b/d5c4a1fd-d021-47d3-8d57-9499052aae5f/_apis/work/boardbadge/eb94509f-4ad5-43de-98b0-c6cc5a1b5074)](https://dev.azure.com/weylandcorp/733f58eb-f0fa-47ad-a944-2e29975fb82b/_boards/board/t/d5c4a1fd-d021-47d3-8d57-9499052aae5f/Microsoft.RequirementCategory/)
+
 ## Description
 
 Example site using react + redux for crud actions
@@ -17,8 +19,9 @@ Azure Devops - See .\azure-pipeline-files for scripts
 ### Heroku Deployment
 
 There are two deployment options:
-   * Heroku git repo (pipeline-heroku-git.yaml)
-   * Heroku docker registry (pipeline-heroku-docker.yaml)
+
+- Heroku git repo (pipeline-heroku-git.yaml)
+- Heroku docker registry (pipeline-heroku-docker.yaml)
 
 NOTE: because heroku has limited deployment methods, git deployment results in heroku requiring a passing build to complete (however the build is done on azure devops), added "heroku-postbuild": "" to package.json "scripts" section to pass the build
 
@@ -38,13 +41,15 @@ Add the following to your pipeline (note any secret variables need to be mapped 
 You can use the provided yaml pipeline definitions or add the following powershell scripts to your custom created pipeline
 
 - Powershell task - build.ps1
-- Powershell task - test.ps1 
+- Powershell task - test.ps1
 - Publish test results task - process the test-report.xml (JUnit report) in the root folder
 
 For git deploy
+
 - Powershell task - deployToHeroku.ps1
 
 For docker deploy
-- Docker task - login (connect to heroku repo, you can use _ as the username and an api key as the password - https://devcenter.heroku.com/articles/container-registry-and-runtime#using-a-ci-cd-platform)
+
+- Docker task - login (connect to heroku repo, you can use \_ as the username and an api key as the password - https://devcenter.heroku.com/articles/container-registry-and-runtime#using-a-ci-cd-platform)
 - Docker task - buildAndPush (point to the Dockerfile-heroku)
 - Docker task - logout
