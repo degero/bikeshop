@@ -8,6 +8,15 @@ Example site using react + redux for crud actions
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Development
+
+To launch: 'npm start'
+To Debug: In vscode use .vscode/launch.json (attaches to API on debug port 9299)
+
+## Production
+
+Use 'node server.js'
+
 ## Dependencies
 
 react / redux / json-server
