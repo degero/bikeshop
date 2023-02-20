@@ -8,6 +8,11 @@ Example site using react + redux for crud actions
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Getting started
+npm i
+npm run prestart:api
+npm start (note if run-p has errors run npm i -g npm-run-all)
+
 ## Development
 
 To launch: 'npm start'
