@@ -1,6 +1,6 @@
 import React from "react";
 const REACT_VERSION = React.version;
-const REDUX_VERSION = "4.0.5";
+const REDUX_VERSION = "4.2.1";
 
 const Footer = () => (
   <footer>

@@ -19,9 +19,9 @@
   },
   "scripts": {
     "start": "run-p start:dev start:api",
-    "start:dev": "react-scripts start",
+    "start:dev": "react-scripts --openssl-legacy-provider start",
     "prestart:api": "node src/mockendpoint/createMockDb.js",
-    "start:api": "node --nolazy --inspect-brk=9229 src/mockendpoint/apiServer.js",
+    "start:api": "node --nolazy ./src/mockendpoint/apiServer.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "testci": "react-scripts test --testResultsProcessor ./node_modules/jest-junit-reporter",
