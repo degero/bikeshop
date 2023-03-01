@@ -19,7 +19,7 @@ To launch: 'npm start'
 To Debug: In vscode use .vscode/launch.json (attaches to API on debug port 9299)
 
 ## Production
-
+Ensure you set the REACT_APP_<val> env env vars before building
 Use 'node server.js'
 
 ## Dependencies
@@ -28,7 +28,7 @@ react / redux / json-server
 
 ## Deployment
 
-Azure Devops - See .\azure-pipeline-files for scripts
+Azure Devops - See .\azure-pipeline-files for scripts these have REACT_APP_ env vars injected on the build
 
 ### Heroku Deployment
 

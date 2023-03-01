@@ -1,0 +1,26 @@
+trigger:
+- master
+
+pr: none
+
+pool:
+  vmImage: ubuntu-latest
+
+variables:
+  versionBase: 1.0.0
+
+steps:
+- script: npm ci
+  displayName: 'npm install'
+
+- script: CI=true npm test
+  displayName: 'npm test'
+
+- script: npm run build
+  displayName: 'npm build'
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact'
+  inputs:
+    artifactName: 'release-files'
+    pathToPublish: '$(System.DefaultWorkingDirectory)/build'
