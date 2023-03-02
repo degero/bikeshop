@@ -8,6 +8,8 @@ pool:
 
 variables:
   versionBase: 1.0.0
+  branchType: master
+  buildVersion: $(versionBase).$(Build.BuildId)-$(branchType)
 
 steps:
 - script: npm ci
