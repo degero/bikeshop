@@ -19,8 +19,9 @@ To launch: 'npm start'
 To Debug: In vscode use .vscode/launch.json (attaches to API on debug port 9299)
 
 ## Production
-Ensure you set the REACT_APP_<val> env env vars before building
-Use 'node server.js'
+Ensure you set the REACT_APP_<val> env env vars before building app in your CI (npm build)
+Use 'node server.js' on heroku
+OR 'npm i json-server && node json-server.js' as startup command on Azure app service
 
 ## Dependencies
 
