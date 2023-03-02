@@ -1,82 +1,63 @@
 pool:
 
-    name: Azure Pipelines
-  
-  steps:
-  
-  - task: PowerShell@2
-  
-    displayName: 'PowerShell - Yarn build'
-  
-    inputs:
-  
-      targetType: filePath
-  
-      filePath: './azure-pipeline-files/build.ps1'
-  
-  
-  
-  - task: PowerShell@2
-  
-    displayName: 'PowerShell - Yarn test'
-  
-    inputs:
-  
-      targetType: filePath
-  
-      filePath: './azure-pipeline-files/test.ps1'
-  
-      errorActionPreference: continue
-  
-  
-  
-  - task: PublishTestResults@2
-  
-    displayName: 'Publish Test Results from react tests'
-  
-    inputs:
-  
-      testResultsFiles: 'test-report.xml'
-  
-      testRunTitle: 'React tests'
-  
-  
-  
-  - task: Docker@2
-  
-    displayName: 'docker login heroku'
-  
-    inputs:
-  
-      containerRegistry: 'Heroku docker registry'
-  
-      command: login
-  
-  
-  
-  - task: Docker@2
-  
-    displayName: buildAndPush
-  
-    inputs:
-  
-      containerRegistry: 'Heroku docker registry'
-  
-      repository: 'bikeshop-react/web'
-  
-      Dockerfile: '**/Dockerfile-heroku'
-  
-  
-  
-  - task: Docker@2
-  
-    displayName: 'docker logout'
-  
-    inputs:
-  
-      containerRegistry: 'Heroku docker registry'
-  
-      command: logout
-  
-  
-  
+  name: Azure Pipelines
+
+steps:
+
+- task: PowerShell@2
+
+  displayName: 'PowerShell - Yarn build'
+
+  inputs:
+
+    targetType: filePath
+
+    filePath: './.\azure-pipeline-files\build.ps1'
+
+
+
+- task: PowerShell@2
+
+  displayName: 'PowerShell - Yarn test'
+
+  inputs:
+
+    targetType: filePath
+
+    filePath: './.\azure-pipeline-files\test.ps1'
+
+    errorActionPreference: continue
+
+
+
+- task: PublishTestResults@2
+
+  displayName: 'Publish Test Results from react tests'
+
+  inputs:
+
+    testResultsFiles: 'test-report.xml'
+
+    testRunTitle: 'React tests'
+
+
+
+- task: PowerShell@2
+
+  displayName: 'PowerShell - Push to heroku'
+
+  inputs:
+
+    targetType: filePath
+
+    filePath: './.\azure-pipeline-files\deployToHeroku.ps1'
+
+  env:
+
+    herokutoken: $(herokutoken)
+
+    gitname: $(git.name)
+
+    gitemail: $(git.email)
+
+
