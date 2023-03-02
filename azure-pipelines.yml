@@ -21,7 +21,7 @@ steps:
 - script: npm run build
   displayName: 'npm build'
 
-- script: mkdir package && mkdir package/build && cp -R ./build/* ./package/build && cp json-server.js ./package/json-server.js
+- script: mkdir package && mkdir package/build && cp -R ./build/* ./package/build && cp json-server.js ./package/json-server.js && cp db.json ./package/db.json
   displayName: 'create deploy package folder'
 
 # Archive build artifact
