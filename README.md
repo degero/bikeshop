@@ -44,12 +44,17 @@ NOTE: because heroku has limited deployment methods, git deployment results in h
 
 Add the following to your pipeline (note any secret variables need to be mapped in when you setup the pipeline powershell tasks under environment variable fields)
 
+(for pipeline-heroku-git.yaml only)
 - heroku.token (secret) - access token, you can create one with your local heroku cli logged in and run
   'heroku authorizations:create --description="<useful name>" --short' then login to heroko website and retrieve the token
   from https://dashboard.heroku.com/account/applications
 - heroku.appname - name of application registered in heroku eg my-app
-- git.name (secret) (for pipeline-heroku-git.yaml only)
-- git.email (secret) (for pipeline-heroku-git.yaml only)
+- git.name (secret)
+- git.email (secret) 
+ 
+(for all pipelines)
+- REACT_APP_GANALYTICS_TAG_ID (just the tag id for your google analytic account if you have one)
+
 
 ### Devops pipeline scripts
 
