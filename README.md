@@ -31,6 +31,10 @@ react / redux / json-server
 
 Azure Devops - See .\azure-pipeline-files for scripts these have REACT_APP_ env vars injected on the build
 
+## Azure Web App Deployment
+
+Ensure you have npm i -g json-server && node json-server.js on the startup command
+
 ### Heroku Deployment
 
 There are two deployment options:
