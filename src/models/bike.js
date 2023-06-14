@@ -1,6 +1,6 @@
 const newBike = {
   id: null,
-  manufacturer: "",
+  manufacturerId: null,
   model: "",
   price: "",
 };

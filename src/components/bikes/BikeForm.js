@@ -1,7 +1,8 @@
 import React from "react";
 import TextInput from "../common/TextInput";
+import Dropdown from "../common/Dropdown";
 
-const BikeForm = ({ bike, onSave, onChange, errors = {}, saving = false }) => (
+const BikeForm = ({ bike, manufacturers, onSave, onChange, errors = {}, saving = false }) => (
   <div className="row content">
     <div className="col-12 col-md-4">
       <h2>{bike.id ? "Edit" : "Create"} Bike</h2>
@@ -11,13 +12,14 @@ const BikeForm = ({ bike, onSave, onChange, errors = {}, saving = false }) => (
         </div>
       )}
       <form onSubmit={onSave} autoComplete="off">
-        <TextInput
-          name="manufacturer"
+        <Dropdown
+          name="manufacturerId"
           label="Manufacturer:"
           onChange={onChange}
-          value={bike.manufacturer}
-          error={errors.manufacturer}
-        ></TextInput>
+          value={bike.manufacturerId}
+          error={errors.manufacturerId}
+          options={[...manufacturers].sort((a, b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase())).map((manufacturer) => { return { value: manufacturer.id, text: manufacturer.name } })}
+        ></Dropdown>
         <TextInput
           name="model"
           label="Model:"
@@ -39,7 +41,7 @@ const BikeForm = ({ bike, onSave, onChange, errors = {}, saving = false }) => (
         />
       </form>
     </div>
-  </div>
+  </div >
 );
 
 export default BikeForm;

@@ -34,7 +34,17 @@ server.post("/bikes/", function (req, res, next) {
   if (error) {
     res.status(400).send(error);
   } else {
-    req.body.slug = createSlug(req.body.manufacturer + " " + req.body.model); // Generate a slug for new courses.
+    req.body.slug = createSlug(req.headers.manufacturer + " " + req.body.model); // Generate a slug for new bikes.
+    next();
+  }
+});
+
+server.post("/manufacturers/", function (req, res, next) {
+  const error = validateManufacturer(req.body);
+  if (error) {
+    res.status(400).send(error);
+  } else {
+    req.body.slug = createSlug(req.body.name); // Generate a slug for new manufacturer.
     next();
   }
 });
@@ -57,8 +67,13 @@ function createSlug(value) {
 
 // server side validation for bike save/updated
 function validateBike(bike) {
-  if (!bike.manufacturer) return "Manufacturer is required.";
+  if (!bike.manufacturerId) return "Manufacturer is required.";
   if (!bike.model) return "Model is required.";
   if (!bike.price) return "Price is required.";
+  return "";
+}
+
+function validateManufacturer(manufacturer) {
+  if (!manufacturer.name) return "Manufacturer name is required.";
   return "";
 }

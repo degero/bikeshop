@@ -6,9 +6,11 @@ export function getBikes() {
 }
 
 export function saveBike(bike) {
+  const manu = bike.manufacturer;
+  delete bike.manufacturer;
   return fetch(baseUrl + (bike.id || ""), {
     method: bike.id ? "PUT" : "POST",
-    headers: { "content-type": "application/json" },
+    headers: { "content-type": "application/json", "manufacturer": manu },
     body: JSON.stringify(bike),
   })
     .then(handleResponse)
