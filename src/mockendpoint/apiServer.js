@@ -33,6 +33,16 @@ server.post("/bikes/", function (req, res, next) {
   }
 });
 
+server.post("/manufacturers/", function (req, res, next) {
+  const error = false;
+  if (error) {
+    res.status(400).send(error);
+  } else {
+    req.body.slug = createSlug(req.body.name); // Generate a slug for new manufacturer.
+    next();
+  }
+});
+
 server.use(router);
 
 // App runs on 3000 and api on 3001

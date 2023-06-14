@@ -1,1 +1,9 @@
-{ "bikes": [] }
+{
+  "bikes": [],
+  "manufacturers": [
+    {
+      "id": 1,
+      "name": "Santa Cruz"
+    }
+  ]
+}

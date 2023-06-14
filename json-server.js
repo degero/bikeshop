@@ -34,7 +34,17 @@ server.post("/bikes/", function (req, res, next) {
   if (error) {
     res.status(400).send(error);
   } else {
-    req.body.slug = createSlug(req.body.manufacturer + " " + req.body.model); // Generate a slug for new courses.
+    req.body.slug = createSlug(req.body.manufacturer + " " + req.body.model); // Generate a slug for new bikes.
+    next();
+  }
+});
+
+server.post("/manufacturers/", function (req, res, next) {
+  const error = false;
+  if (error) {
+    res.status(400).send(error);
+  } else {
+    req.body.slug = createSlug(req.body.name); // Generate a slug for new manufacturer.
     next();
   }
 });

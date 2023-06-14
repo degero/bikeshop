@@ -8,6 +8,15 @@ const bikes = [
   },
 ];
 
+const manufacturers = [
+  {
+    id: 1,
+    name: "Santa Cruz",
+    slug: "santa-cruz"
+  },
+];
+
 module.exports = {
   bikes,
+  manufacturers
 };
