@@ -7,6 +7,7 @@ import { newBike } from "../../models/bike";
 
 export function BikeCrudForm({
   bikes,
+  manufacturers,
   loadBikes,
   saveBike,
   history,
@@ -26,10 +27,10 @@ export function BikeCrudForm({
   }, [props.bike]);
 
   function formIsValid() {
-    const { manufacturer, model, price } = bike;
+    const { manufacturerId, model, price } = bike;
     const errors = {};
 
-    if (!manufacturer) errors.manufacturer = "Manufacturer is required.";
+    if (!manufacturerId) errors.manufacturerId = "Manufacturer is required.";
     if (!model) errors.model = "Model is required.";
     if (!price) errors.price = "Price is required.";
 
@@ -43,7 +44,7 @@ export function BikeCrudForm({
     // take prev obj and replace with new obj and updated field 'name'
     setBike((prevBike) => ({
       ...prevBike,
-      [name]: value,
+      [name]: name === "manufacturerId" ? parseInt(value) : value,
     }));
   }
 
@@ -51,7 +52,7 @@ export function BikeCrudForm({
     event.preventDefault();
     if (!formIsValid()) return;
     setSaving(true);
-    saveBike(bike)
+    saveBike({ ...bike, manufacturer: manufacturers.find(r => r.id === bike.manufacturerId).name })
       .then(() => {
         setSaving(false);
         // TODO show success
@@ -70,6 +71,7 @@ export function BikeCrudForm({
       bike={bike}
       errors={errors}
       saving={isSaving}
+      manufacturers={manufacturers}
     ></BikeForm>
   );
 }
@@ -78,6 +80,7 @@ BikeCrudForm.propTypes = {
   bike: PropTypes.object.isRequired,
   errors: PropTypes.object,
   bikes: PropTypes.array,
+  manufacturers: PropTypes.array,
   loadBikes: PropTypes.func.isRequired,
   saveBike: PropTypes.func.isRequired,
   history: PropTypes.object.isRequired,
@@ -96,6 +99,7 @@ function mapStateToProps(state, ownProps) {
   return {
     bike,
     bikes: state.bikes,
+    manufacturers: state.manufacturers,
   };
 }
 

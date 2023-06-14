@@ -46,13 +46,14 @@ const ManufacturerForm = ({ manufacturer, onSave, saving = false }) => {
   return (
     <div className="row content">
       <div className="col-12">
-        <h2>{manufacturer.id ? "Edit" : "Create"} Manufacturer (using react hook form)</h2>
+        <h2>{manufacturer.id ? "Edit" : "Create"} Manufacturer</h2>
+        <p>* using react-hook-form</p>
       </div>
       <div className="col-12 col-md-4">
         <form onSubmit={handleSubmit(submit)} autoComplete="off">
           <div className={formWrapperStyle}>
-            <label htmlFor="manufacturer">Manufacturer:</label>
-            <input type="text"
+            <label htmlFor="manufacturer">Manufacturer name:</label>
+            <input className="form-control" type="text"
               name="manufacturer"
               {...register("name", { required: "Manufacturer name is required" })}
             />

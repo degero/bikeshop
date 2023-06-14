@@ -3,7 +3,13 @@
   "manufacturers": [
     {
       "id": 1,
-      "name": "Santa Cruz"
+      "name": "Santa Cruz",
+      "slug": "santa-cruz"
+    },
+    {
+      "id": 2,
+      "name": "Yeti",
+      "slug": "yeti"
     }
   ]
 }

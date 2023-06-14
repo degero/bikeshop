@@ -23,12 +23,12 @@ const ManufacturerList = ({ manufacturers, deleteItem }) => (
                 </Link>
               </td>
               <td>
-                <button
+                {/* <button
                   className="btn btn-outline-danger"
                   onClick={() => deleteItem(manufacturer)}
                 >
                   Delete
-                </button>
+                </button> */}
               </td>
             </tr>
           );

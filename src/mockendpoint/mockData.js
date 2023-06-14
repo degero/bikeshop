@@ -1,10 +1,10 @@
 const bikes = [
   {
     id: 1,
-    manufacturer: "Santa Cruz",
+    manufacturerId: 1,
     model: "Bronson",
     price: 6999,
-    slug: "santa-cruz-bronson",
+    slug: "santa-cruz-bronson-1",
   },
 ];
 
@@ -13,6 +13,11 @@ const manufacturers = [
     id: 1,
     name: "Santa Cruz",
     slug: "santa-cruz"
+  },
+  {
+    id: 2,
+    name: "Yeti",
+    slug: "yeti"
   },
 ];
 
