@@ -1,0 +1,20 @@
+jobs:
+  - job: 'Build'
+    displayName: 'Build job'
+    pool:
+      vmImage: ubuntu-latest
+      demands:
+      - npm
+
+    variables:
+      versionBase: 1.0.0
+
+    steps:
+    - script: npm ci
+      displayName: 'npm install'
+
+    - script: CI=true npm run testci
+      displayName: 'npm run testci'
+
+    - script: CI=true npm run build
+      displayName: 'npm build'
