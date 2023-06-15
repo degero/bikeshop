@@ -27,7 +27,7 @@ exports[`Bikeform component - snapshots sets submit button label 'Save' when sav
           className="form-control"
           name="manufacturerId"
           onChange={[Function]}
-          value={1}
+          value="1"
         >
           <option
             value=""

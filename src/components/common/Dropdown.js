@@ -14,7 +14,7 @@ const Dropdown = ({ value, error, onChange, name, label, options }) => {
   }
 
   useEffect(() => {
-    setSelectedValue(value);
+    setSelectedValue(value != null ? value.toString() : '');
   }, [value]);
 
   return (
