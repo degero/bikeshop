@@ -48,8 +48,8 @@ export function ManufacturerCrudForm({
   return (
     <div>
       {errors ? (
-        Object.getOwnPropertyNames(errors).map((v) => {
-          return (<div className="col-12 col-md-4 alert alert-danger">
+        Object.getOwnPropertyNames(errors).map((v, i) => {
+          return (<div key={i} className="col-12 col-md-4 alert alert-danger">
             {errors[v]}
           </div>);
         })) : (
