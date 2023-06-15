@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 
 const Dropdown = ({ value, error, onChange, name, label, options }) => {
-  const [selectedValue, setSelectedValue] = useState();
+  const [selectedValue, setSelectedValue] = useState(value != null ? value.toString() : '');
   let formWrapperStyle = "form-group";
   if (error && error.length > 0) {
     formWrapperStyle += " has-error";

@@ -4,7 +4,7 @@ const bikes = [
     manufacturerId: 1,
     model: "Bronson",
     price: 6999,
-    slug: "santa-cruz-bronson-1",
+    slug: "santa-cruz-bronson",
   },
 ];
 

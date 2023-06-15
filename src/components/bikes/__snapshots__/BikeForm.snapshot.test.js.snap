@@ -19,17 +19,32 @@ exports[`Bikeform component - snapshots sets submit button label 'Save' when sav
         className="form-group"
       >
         <label
-          htmlFor="manufacturer"
+          htmlFor="manufacturerId"
         >
           Manufacturer:
         </label>
-        <input
+        <select
           className="form-control"
-          name="manufacturer"
-          onChange={[MockFunction]}
-          type="text"
-          value="Santa Cruz"
-        />
+          name="manufacturerId"
+          onChange={[Function]}
+          value={1}
+        >
+          <option
+            value=""
+          >
+            Please select
+          </option>
+          <option
+            value={1}
+          >
+            Santa Cruz
+          </option>
+          <option
+            value={2}
+          >
+            Yeti
+          </option>
+        </select>
       </div>
       <div
         className="form-group"
@@ -92,17 +107,32 @@ exports[`Bikeform component - snapshots sets submit button label 'Saving...' whe
         className="form-group"
       >
         <label
-          htmlFor="manufacturer"
+          htmlFor="manufacturerId"
         >
           Manufacturer:
         </label>
-        <input
+        <select
           className="form-control"
-          name="manufacturer"
-          onChange={[MockFunction]}
-          type="text"
-          value="Santa Cruz"
-        />
+          name="manufacturerId"
+          onChange={[Function]}
+          value="1"
+        >
+          <option
+            value=""
+          >
+            Please select
+          </option>
+          <option
+            value={1}
+          >
+            Santa Cruz
+          </option>
+          <option
+            value={2}
+          >
+            Yeti
+          </option>
+        </select>
       </div>
       <div
         className="form-group"
