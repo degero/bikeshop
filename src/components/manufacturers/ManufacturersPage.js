@@ -18,7 +18,7 @@ export function ManufacturersPage(props) {
         setErrors({ loadError: "Error loading manufacturers: " + error });
       });
     }
-  }, [props.manufacturers]);
+  }, [manufacturers, actions]);
 
   return (
     <>

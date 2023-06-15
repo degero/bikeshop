@@ -31,7 +31,7 @@ const ManufacturerForm = ({ manufacturer, onSave, saving = false }) => {
       const fields = ['name'];
       fields.forEach(field => setValue(field, manufacturer[field]));
     }
-  }, []);
+  }, [manufacturer, setValue]);
 
   return (
     <div className="row content">
