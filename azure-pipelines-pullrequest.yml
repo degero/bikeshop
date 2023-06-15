@@ -4,4 +4,4 @@ stages:
 - stage: 'Build'
   displayName: 'Build+Test'
   jobs: 
-  - template: azure-pipelines/build-test.yml
+  - template: azure-pipeline-files/build-test.yml
