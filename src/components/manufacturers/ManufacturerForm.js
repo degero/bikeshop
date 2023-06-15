@@ -8,28 +8,19 @@ const ManufacturerForm = ({ manufacturer, onSave, saving = false }) => {
   );
   let formWrapperStyle = "form-group";
 
-  // function handleInputChange(event) {
-  //   const { name, value } = event.target;
-  //   // take prev obj and replace with new obj and updated field 'name'
-  //   setManufacturer((prevManufacturer) => ({
-  //     ...prevManufacturer,
-  //     [name]: value,
-  //   }));
-  // }
-
   if (errors && errors.length > 0) {
     formWrapperStyle += " has-error";
   }
 
   const submit = data => {
+    console.log('saving');
     onSave(data);
   }
 
   const errorSection = (errorField, type, message) => {
     if (errorField?.type === type) {
-      console.log(errorField);
       return (
-        <div className="alert alert-danger">
+        <div className="alert alert-danger" role="alert">
           <p>{message ?? errorField.message}</p>
         </div>
       )
@@ -52,18 +43,16 @@ const ManufacturerForm = ({ manufacturer, onSave, saving = false }) => {
       <div className="col-12 col-md-4">
         <form onSubmit={handleSubmit(submit)} autoComplete="off">
           <div className={formWrapperStyle}>
-            <label htmlFor="manufacturer">Manufacturer name:</label>
-            <input className="form-control" type="text"
-              name="manufacturer"
+            <label htmlFor="name">Manufacturer name:</label>
+            <input className="form-control" type="text" id="name"
               {...register("name", { required: "Manufacturer name is required" })}
             />
-            {errorSection(errors?.name, "required")}
           </div>
-          <input
+          {errorSection(errors?.name, "required")}
+          <button
             className="btn btn-primary"
             type="submit"
-            value={saving ? "Saving" : "Save"}
-          />
+          >{saving ? "Saving" : "Save"}</button>
         </form>
       </div>
     </div>
