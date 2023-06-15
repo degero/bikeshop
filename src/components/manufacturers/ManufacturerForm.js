@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 
 const ManufacturerForm = ({ manufacturer, onSave, saving = false }) => {
   const { register, handleSubmit, setValue, formState: { errors } } = useForm(
-    { defaultValues: { manufacturerName: manufacturer.name } }
+    { defaultValues: { name: manufacturer.name } }
   );
   let formWrapperStyle = "form-group";
 
@@ -13,7 +13,6 @@ const ManufacturerForm = ({ manufacturer, onSave, saving = false }) => {
   }
 
   const submit = data => {
-    console.log('saving');
     onSave(data);
   }
 
@@ -21,7 +20,7 @@ const ManufacturerForm = ({ manufacturer, onSave, saving = false }) => {
     if (errorField?.type === type) {
       return (
         <div className="alert alert-danger" role="alert">
-          <p>{message ?? errorField.message}</p>
+          <p className="error-text">{message ?? errorField.message}</p>
         </div>
       )
     }
