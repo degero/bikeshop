@@ -23,7 +23,7 @@ jobs:
     - script: mkdir package && mkdir package/build && cp -R ./build/* ./package/build && cp json-server.js ./package/json-server.js && cp db.json ./package/db.json
       displayName: 'create deploy package folder'
 
- - job: 'Package'
+  - job: 'Package'
     displayName: 'Package job'
     dependsOn: 'Build'
     condition: and(succeeded(), eq(variables.isMaster, true))
