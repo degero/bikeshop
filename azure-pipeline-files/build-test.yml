@@ -12,4 +12,4 @@ steps:
   displayName: 'Publish jest report'
   condition: succeededOrFailed()
   inputs:
-    testResultsFiles: 'junit.xml'
+    testResultsFiles: 'test-report.xml'
