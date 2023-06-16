@@ -12,11 +12,7 @@ variables:
   buildVersion: $(versionBase).$(Build.BuildId)-$(branchType)
 
 stages:
-- stage: 'Build'
-  displayName: 'Build+Test'
+- stage: 'BuildTestPackage'
+  displayName: 'Build+Test+Package'
   jobs: 
   - template: azure-pipeline-files/build-test.yml
-- stage: 'Package'
-  displayName: 'Package'
-  jobs: 
-  - template: azure-pipeline-files/package.yml

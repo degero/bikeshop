@@ -8,6 +8,7 @@ jobs:
 
     variables:
       versionBase: 1.0.0
+      isMaster: $[eq(variables['Build.SourceBranch'], 'refs/heads/master')]
 
     steps:
     - script: npm ci
@@ -18,3 +19,25 @@ jobs:
 
     - script: CI=true npm run build
       displayName: 'npm build'
+
+    - script: mkdir package && mkdir package/build && cp -R ./build/* ./package/build && cp json-server.js ./package/json-server.js && cp db.json ./package/db.json
+      displayName: 'create deploy package folder'
+
+ - job: 'Package'
+    displayName: 'Package job'
+    dependsOn: 'Build'
+    condition: and(succeeded(), eq(variables.isMaster, true))
+    steps:
+    # Archive build artifact
+    - task: ArchiveFiles@2
+      displayName: 'Archive files'
+      inputs:
+        rootFolderOrFile: '$(System.DefaultWorkingDirectory)/package'
+        includeRootFolder: false
+        archiveFile: '$(System.DefaultWorkingDirectory)/$(buildVersion).zip'
+
+    # Publish build artifact (To Azure Devops)
+    - task: PublishBuildArtifacts@1
+      inputs:
+        PathtoPublish: '$(System.DefaultWorkingDirectory)/$(buildVersion).zip'
+        artifactName: 'release-files'
