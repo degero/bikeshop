@@ -8,7 +8,7 @@ jobs:
 
     variables:
       versionBase: 1.0.0
-      isMaster: $[eq(variables['Build.SourceBranch'], 'refs/heads/master')]
+      isMaster: true
 
     steps:
     - script: npm ci
