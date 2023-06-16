@@ -5,14 +5,14 @@ pr: none
 
 pool:
   vmImage: ubuntu-latest
+  demands:
+  - npm
 
 variables:
   versionBase: 1.0.0
   branchType: master
   buildVersion: $(versionBase).$(Build.BuildId)-$(branchType)
 
-stages:
-- stage: 'BuildTestPackage'
-  displayName: 'Build+Test+Package'
-  jobs: 
+steps:
   - template: azure-pipeline-files/build-test.yml
+  - template: azure-pipeline-files/package.yml
