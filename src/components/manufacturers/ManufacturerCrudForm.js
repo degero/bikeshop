@@ -28,7 +28,7 @@ export function ManufacturerCrudForm({
         ...props.manufacturer
       });
     }
-  }, [manufacturer, manufacturers, loadManufacturers, props.manufacturer]);
+  }, [props.manufacturer, loadManufacturers, manufacturers]);
 
   function handleSave(data) {
     setErrors(null);
