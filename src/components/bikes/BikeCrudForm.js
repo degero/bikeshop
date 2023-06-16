@@ -24,7 +24,7 @@ export function BikeCrudForm({
     } else {
       setBike({ ...props.bike });
     }
-  }, [props.bike]);
+  }, [props.bike, bikes, loadBikes]);
 
   function formIsValid() {
     const { manufacturerId, model, price } = bike;

@@ -1,6 +1,7 @@
 import React from "react";
 import { mount } from "enzyme";
 import { bikes } from "../../mockendpoint/mockData";
+import { manufacturers } from "../../mockendpoint/mockData";
 import { newBike } from "../../models/bike";
 import { BikeCrudForm } from "./BikeCrudForm";
 
@@ -36,7 +37,7 @@ describe("BikeCrudForm component - deep render", () => {
   it("submit shows error message when Price field is empty", () => {
     // ARRANGE
     const data = {
-      bike: { ...newBike, ...{ model: "Santa cruz", manufacturer: "Tallboy" } },
+      bike: { ...newBike, ...{ model: "Tallboy", manufacturerId: 1 } },
     };
     const form = renderBikeCrudForm(data);
 
@@ -52,7 +53,7 @@ describe("BikeCrudForm component - deep render", () => {
   it("submit shows error message when Model field is empty", () => {
     // ARRANGE
     const data = {
-      bike: { ...newBike, ...{ price: "10000000", manufacturer: "Tallboy" } },
+      bike: { ...newBike, ...{ price: "10000000", manufacturerId: 1 } },
     };
     const form = renderBikeCrudForm(data);
 
@@ -71,6 +72,7 @@ describe("BikeCrudForm component - deep render", () => {
 function renderBikeCrudForm(args) {
   const defaultProps = {
     bikes,
+    manufacturers,
     loadBikes: jest.fn(),
     saveBike: jest.fn(),
     history: {},

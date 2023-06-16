@@ -1,0 +1,7 @@
+pr: 
+- master
+stages:
+- stage: 'Build'
+  displayName: 'Build+Test'
+  jobs: 
+  - template: azure-pipeline-files/build-test.yml

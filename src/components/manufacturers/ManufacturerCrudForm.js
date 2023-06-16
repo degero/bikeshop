@@ -28,27 +28,7 @@ export function ManufacturerCrudForm({
         ...props.manufacturer
       });
     }
-  }, [props.manufacturer]);
-
-  // function formIsValid() {
-  //   const { manufacturer } = manufacturer;
-  //   const errors = {};
-
-  //   if (!manufacturer) errors.name = "Manufacturer name is required.";
-
-  //   setErrors(errors);
-  //   // Form is valid if the errors object still has no properties
-  //   return Object.keys(errors).length === 0;
-  // }
-
-  // function handleInputChange(event) {
-  //   const { name, value } = event.target;
-  //   // take prev obj and replace with new obj and updated field 'name'
-  //   setManufacturer((prevManufacturer) => ({
-  //     ...prevManufacturer,
-  //     [name]: value,
-  //   }));
-  // }
+  }, [props.manufacturer, loadManufacturers, manufacturers]);
 
   function handleSave(data) {
     setErrors(null);
@@ -68,8 +48,8 @@ export function ManufacturerCrudForm({
   return (
     <div>
       {errors ? (
-        Object.getOwnPropertyNames(errors).map((v) => {
-          return (<div className="col-12 col-md-4 alert alert-danger">
+        Object.getOwnPropertyNames(errors).map((v, i) => {
+          return (<div key={i} className="col-12 col-md-4 alert alert-danger">
             {errors[v]}
           </div>);
         })) : (

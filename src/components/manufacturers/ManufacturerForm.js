@@ -4,18 +4,9 @@ import { useForm } from "react-hook-form";
 
 const ManufacturerForm = ({ manufacturer, onSave, saving = false }) => {
   const { register, handleSubmit, setValue, formState: { errors } } = useForm(
-    { defaultValues: { manufacturerName: manufacturer.name } }
+    { defaultValues: { name: manufacturer.name } }
   );
   let formWrapperStyle = "form-group";
-
-  // function handleInputChange(event) {
-  //   const { name, value } = event.target;
-  //   // take prev obj and replace with new obj and updated field 'name'
-  //   setManufacturer((prevManufacturer) => ({
-  //     ...prevManufacturer,
-  //     [name]: value,
-  //   }));
-  // }
 
   if (errors && errors.length > 0) {
     formWrapperStyle += " has-error";
@@ -27,10 +18,9 @@ const ManufacturerForm = ({ manufacturer, onSave, saving = false }) => {
 
   const errorSection = (errorField, type, message) => {
     if (errorField?.type === type) {
-      console.log(errorField);
       return (
-        <div className="alert alert-danger">
-          <p>{message ?? errorField.message}</p>
+        <div className="alert alert-danger" role="alert">
+          <p className="error-text">{message ?? errorField.message}</p>
         </div>
       )
     }
@@ -41,7 +31,7 @@ const ManufacturerForm = ({ manufacturer, onSave, saving = false }) => {
       const fields = ['name'];
       fields.forEach(field => setValue(field, manufacturer[field]));
     }
-  }, []);
+  }, [manufacturer, setValue]);
 
   return (
     <div className="row content">
@@ -52,18 +42,16 @@ const ManufacturerForm = ({ manufacturer, onSave, saving = false }) => {
       <div className="col-12 col-md-4">
         <form onSubmit={handleSubmit(submit)} autoComplete="off">
           <div className={formWrapperStyle}>
-            <label htmlFor="manufacturer">Manufacturer name:</label>
-            <input className="form-control" type="text"
-              name="manufacturer"
+            <label htmlFor="name">Manufacturer name:</label>
+            <input className="form-control" type="text" id="name"
               {...register("name", { required: "Manufacturer name is required" })}
             />
-            {errorSection(errors?.name, "required")}
           </div>
-          <input
+          {errorSection(errors?.name, "required")}
+          <button
             className="btn btn-primary"
             type="submit"
-            value={saving ? "Saving" : "Save"}
-          />
+          >{saving ? "Saving" : "Save"}</button>
         </form>
       </div>
     </div>

@@ -2,6 +2,7 @@ import React from "react";
 import { cleanup, render } from "@testing-library/react";
 import BikeForm from "./BikeForm";
 import { newBike } from "../../models/bike";
+import { manufacturers } from "../../mockendpoint/mockData";
 
 afterEach(cleanup);
 
@@ -42,8 +43,9 @@ describe("BikeForm component", () => {
 function renderBikeForm(args) {
   let defaultProps = {
     bike: newBike,
-    onSave: () => {},
-    onChange: () => {},
+    manufacturers,
+    onSave: () => { },
+    onChange: () => { },
     errors: {},
     saving: false,
   };

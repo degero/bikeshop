@@ -28,7 +28,7 @@ export function BikesPage(props) {
       };
       runTask2();
     }
-  }, [props.bikes, props.manufacturers]);
+  }, [bikes, manufacturers, actions]);
 
 
   return (

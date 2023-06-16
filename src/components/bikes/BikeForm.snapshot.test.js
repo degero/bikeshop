@@ -1,7 +1,7 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import BikeForm from "./BikeForm";
-import { bikes } from "../../mockendpoint/mockData";
+import { bikes, manufacturers } from "../../mockendpoint/mockData";
 
 describe("Bikeform component - snapshots", () => {
   it("sets submit button label 'Saving...' when saving is true", () => {
@@ -9,6 +9,7 @@ describe("Bikeform component - snapshots", () => {
     const tree = renderer.create(
       <BikeForm
         bike={bikes[0]}
+        manufacturers={manufacturers}
         onSave={jest.fn()}
         onChange={jest.fn()}
         saving={true}
@@ -23,6 +24,7 @@ describe("Bikeform component - snapshots", () => {
     const tree = renderer.create(
       <BikeForm
         bike={bikes[0]}
+        manufacturers={manufacturers}
         onSave={jest.fn()}
         onChange={jest.fn()}
         saving={false}
