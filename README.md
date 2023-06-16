@@ -37,7 +37,7 @@ When adding the pipeline in the devops UI ensure you set this on the variables f
 
 Deployment is done with Classic Azure devops release pipelines using the artifact from the azure-pipelines.yml
 Ensure you have npm i -g json-server && node json-server.js on the startup command
-asdfasfd
+
 ### Heroku Deployment (Just left for reference)
 
 There are two deployment options:
