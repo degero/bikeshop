@@ -27,15 +27,18 @@ OR 'npm i json-server && node json-server.js' as startup command on Azure app se
 
 react / redux / json-server
 
-## Deployment
+## Azure devops build pipeline
 
-Azure Devops - See .\azure-pipeline-files for scripts these have REACT_APP_ env vars injected on the build
+REACT_APP_ env vars need to be injected on the build (EG: REACT_APP_GANALYTICS_TAG_ID)
+When adding the pipeline in the devops UI ensure you set this on the variables for the pipeline
+
 
 ## Azure Web App Deployment
 
+Deployment is done with Classic Azure devops release pipelines using the artifact from the azure-pipelines.yml
 Ensure you have npm i -g json-server && node json-server.js on the startup command
 
-### Heroku Deployment
+### Heroku Deployment (Just left for reference)
 
 There are two deployment options:
 
@@ -44,7 +47,9 @@ There are two deployment options:
 
 NOTE: because heroku has limited deployment methods, git deployment results in heroku requiring a passing build to complete (however the build is done on azure devops), added "heroku-postbuild": "" to package.json "scripts" section to pass the build
 
-### Devops pipeline variables
+### Heroku Devops pipeline variables  (Just left for reference)
+
+Azure Devops - See .\azure-pipeline-files for scripts these have REACT_APP_ env vars injected on the build
 
 Add the following to your pipeline (note any secret variables need to be mapped in when you setup the pipeline powershell tasks under environment variable fields)
 
@@ -60,7 +65,7 @@ Add the following to your pipeline (note any secret variables need to be mapped 
 - REACT_APP_GANALYTICS_TAG_ID (just the tag id for your google analytic account if you have one)
 
 
-### Devops pipeline scripts
+### Heroku Devops pipeline scripts (Just left for reference)
 
 You can use the provided yaml pipeline definitions or add the following powershell scripts to your custom created pipeline
 
