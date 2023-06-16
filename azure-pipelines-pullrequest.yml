@@ -1,7 +1,13 @@
 pr: 
 - master
-stages:
-- stage: 'Build'
-  displayName: 'Build+Test'
-  jobs: 
-  - template: azure-pipeline-files/build-test.yml
+
+pool:
+  vmImage: ubuntu-latest
+  demands:
+  - npm
+
+jobs:
+  - job: Build
+    displayName: PRBuild+Test
+    steps:
+    - template: azure-pipeline-files/build-test.yml

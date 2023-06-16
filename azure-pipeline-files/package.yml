@@ -1,28 +1,16 @@
-jobs:
-  - job: 'Package'
-    displayName: 'Package job'
-    pool:
-      vmImage: ubuntu-latest
-      demands:
-      - npm
+steps:
+- script: mkdir package && mkdir package/build && cp -R ./build/* ./package/build && cp json-server.js ./package/json-server.js && cp db.json ./package/db.json
+  displayName: 'create deploy package folder'
+# Archive build artifact
+- task: ArchiveFiles@2
+  displayName: 'Archive files'
+  inputs:
+    rootFolderOrFile: '$(System.DefaultWorkingDirectory)/package'
+    includeRootFolder: false
+    archiveFile: '$(System.DefaultWorkingDirectory)/$(buildVersion).zip'
 
-    variables:
-      versionBase: 1.0.0
-
-    steps:
-      - script: mkdir package && mkdir package/build && cp -R ./build/* ./package/build && cp json-server.js ./package/json-server.js && cp db.json ./package/db.json
-        displayName: 'create deploy package folder'
-
-      # Archive build artifact
-      - task: ArchiveFiles@2
-        displayName: 'Archive files'
-        inputs:
-          rootFolderOrFile: '$(System.DefaultWorkingDirectory)/package'
-          includeRootFolder: false
-          archiveFile: '$(System.DefaultWorkingDirectory)/$(buildVersion).zip'
-
-      # Publish build artifact (To Azure Devops)
-      - task: PublishBuildArtifacts@1
-        inputs:
-          PathtoPublish: '$(System.DefaultWorkingDirectory)/$(buildVersion).zip'
-          artifactName: 'release-files'
+# Publish build artifact (To Azure Devops)
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(System.DefaultWorkingDirectory)/$(buildVersion).zip'
+    artifactName: 'release-files'
