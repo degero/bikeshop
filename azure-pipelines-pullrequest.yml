@@ -5,6 +5,9 @@ pool:
   vmImage: ubuntu-latest
   demands:
   - npm
-  
-steps:
-  - template: azure-pipeline-files/build-test.yml
+
+jobs:
+  - job: Build
+    displayName: PRBuild+Test
+    steps:
+    - template: azure-pipeline-files/build-test.yml

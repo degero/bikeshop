@@ -13,6 +13,9 @@ variables:
   branchType: master
   buildVersion: $(versionBase).$(Build.BuildId)-$(branchType)
 
-steps:
-  - template: azure-pipeline-files/build-test.yml
-  - template: azure-pipeline-files/package.yml
+jobs:
+  - job: Build
+    displayName: Build+Test+Package
+    steps:
+    - template: azure-pipeline-files/build-test.yml
+    - template: azure-pipeline-files/package.yml
